@@ -37,20 +37,6 @@ class DeckTestCase(unittest.TestCase):
             self.assertEqual(self.cards[i].color, self.smDeck.cards[i].color)
             self.assertEqual(self.cards[i].number, self.smDeck.cards[i].number)
 
-    def test_shuffle(self):
-        pre_cards = self.deck.cards
-        self.deck.shuffle()
-        # the cards in the deck before and after the shuffle should be
-        # exactly the same
-        pre_card_to_new_card_cnt = {card: 0 for card in pre_cards}
-        for new_card in self.deck.cards:
-            for pre_card in pre_cards:
-                if new_card.color == pre_card.color \
-                    and new_card.number == pre_card.number:
-                    pre_card_to_new_card_cnt[pre_card] = 1
-        for card in pre_card_to_new_card_cnt:
-            self.assertEqual(pre_card_to_new_card_cnt[card], 1)
-
     def test_sort(self):
         self.assertEqual(True, True)
 
