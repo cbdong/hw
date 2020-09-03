@@ -80,3 +80,23 @@ class Player():
     def get_score(self):
         return sum([CONSTANTS.COLOR_WEIGHT[card.color] * card.number for \
                 card in self.cards])
+
+class Game():
+    def __init__(self):
+        self.player0 = Player()
+        self.player1 = Player()
+        self.deck = Deck()
+
+    def play(self):
+        self.deck.shuffle()
+        for i in range(CONSTANTS.NUM_CARDS_TO_GET_BY_PLAYER):
+            self.player0.get_card(self.deck)
+            self.player1.get_card(self.deck)
+        score0 = self.player0.get_score()
+        score1 = self.player1.get_score()
+        if score0 > score1:
+            return 0
+        elif score1 > score0:
+            return 1
+        else:
+            return -1

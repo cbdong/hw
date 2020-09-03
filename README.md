@@ -54,10 +54,10 @@ Then we implement a game where two players play the game. They will draw 3 cards
     - cards, empty list
     - num_card, 0
 
-## Shuffle method
-
-## Get method
-
-## Sort method
-
-## Two players play the game
+4. **Game**
+  - Variables
+    - player0, the first player
+    - player1, the second player
+    - deck, the deck of cards that the two players use
+  - Public methond
+    - play, this function play the game where two players get cards in turn and compare the score, return 0 if first player win, return 1 if second player win, return -1 when they get the same score
