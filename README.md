@@ -5,10 +5,6 @@
 - [Card game design overview](#card-game-design-overview)
   - [Goal](#goal)
   - [Data structure](#data-structure)
-- [Shuffle method](#shuffle-method)
-- [Get method](#get-method)
-- [Sort method](#sort-method)
-- [Two players play the game](#two-players-play-the-game)
 
 ## Card game design overview
 
@@ -59,5 +55,8 @@ Then we implement a game where two players play the game. They will draw 3 cards
     - player0, the first player
     - player1, the second player
     - deck, the deck of cards that the two players use
-  - Public methond
+  - Public method
     - play, this function play the game where two players get cards in turn and compare the score, return 0 if first player win, return 1 if second player win, return -1 when they get the same score
+  - Private method
+    - _take_cards: shuffle the deck, two players take the cards from the deck in turn
+    - _find_winner: calculate the score of each player, and find the winner
