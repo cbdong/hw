@@ -41,8 +41,8 @@ Then we implement a game where two players play the game. They will draw 3 cards
   - Private method
     - isEmpty, check if the deck is already empty
   - Init status
-    - cards, three color red, yellow, green, number from 1 to 12
-    - size, 36
+    - cards, three color red, yellow, green, number from 1 to 12, or the given cards
+    - size, 36, or the length of the given cards
 3. **Player**
   - Variables
     - cards, a list of card, used to record the cards that the player has
