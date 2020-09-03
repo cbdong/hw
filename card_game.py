@@ -20,7 +20,7 @@ class Card():
             raise ValueError('{color} is not in valid colors{colors}.' \
                                 .format(color=color, colors=CONSTANTS.COLORS))
 
-        if number not in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK):
+        if number not in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
            raise ValueError("{num} is not in valid range [1, {max_num}]." \
             .format(num=number, max_num=CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK))
 
