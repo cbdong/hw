@@ -94,8 +94,16 @@ class Game():
             self.player1.get_card(self.deck)
 
     def _find_winner(self):
+        print("Player0 has the following cards:")
+        for card in self.player0.cards:
+            print("({},{})".format(card.color, card.number))
+        print("Player1 has the following cards:")
+        for card in self.player0.cards:
+            print("({},{})".format(card.color, card.number))
         score0 = self.player0.get_score()
         score1 = self.player1.get_score()
+        print("Score that player0 get: {}".format(score0))
+        print("Score that player1 get: {}".format(score1))
         if score0 > score1:
             return 0
         elif score1 > score0:
