@@ -20,6 +20,7 @@ class DeckTestCase(unittest.TestCase):
         self.deck = Deck()
         self.cards = [Card('red', 1), Card('green', 3)]
         self.smDeck = Deck(self.cards)
+        self.emptyDeck = Deck([])
 
     def test_init_value_no_given_cards(self):
         for color_cnt in range(len(CONSTANTS.COLORS)):
@@ -40,8 +41,16 @@ class DeckTestCase(unittest.TestCase):
     def test_sort(self):
         self.assertEqual(True, True)
 
-    def test_get(self):
-        self.assertEqual(True, True)
+    def test_get_from_non_empty(self):
+        self.smDeck.get()
+        self.assertEqual(1, self.smDeck.size)
+        self.assertEqual(1, len(self.smDeck.cards))
+        self.assertEqual('red', self.smDeck.cards[0].color)
+        self.assertEqual(1, self.smDeck.cards[0].number)
+
+    def test_get_from_empty(self):
+        self.assertRaises(IndexError, self.emptyDeck.get)
+
 
 class PlayerTestCase(unittest.TestCase):
     def setUp(self):

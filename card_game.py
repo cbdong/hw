@@ -35,11 +35,18 @@ class Deck():
 
         self.size = len(self.cards)
 
+    def _isEmpty(self):
+        return self.size == 0
+
     def shuffle(self):
         random.shuffle(self.cards)
 
     def get(self):
-        pass
+        if self._isEmpty():
+            raise IndexError("Try to get a card from an empty deck")
+
+        self.size -= 1
+        return self.cards.pop()
 
     def sort(self, color_order):
         pass
