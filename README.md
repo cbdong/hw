@@ -24,21 +24,35 @@ Then we implement a game where two players play the game. They will draw 3 cards
 
 ### Data Structure
 
-1. Class Card
-  The class Card has two variables:
-  - color
-  - number
-2. Class Deck
-  It two variables
-  - cards, a list of card, used to record the remaining cards in the deck
-  - size, a int, used to record the number of cards left in the deck
-  It has the following public method:
-  - shuffle
-  - get
-  - sort
-  It has the following private method:
-  - isEmpty
-  In the following part of the doc, we will discuss how to implement the methods for the deck.
+1. **Class Card**
+  - Variables:
+    - color
+    - number
+  - init status
+    - both the variable are assigned by the parameter
+2. **Class Deck**
+  - Variables
+    - cards, a list of card, used to record the remaining cards in the deck
+    - size, a int, used to record the number of cards left in the deck
+  - public method
+    - shuffle, shuffle the cards in the deck
+    - get, get the top card and return it
+    - sort, sort the cards in the decking according to the given color order and the number
+  - private method
+    - isEmpty, check if the deck is already empty
+  - init status
+    - cards, three color red, yellow, green, number from 1 to 12
+    - size = 36
+3. **Player**
+  - Variables
+    - cards, a list of card, used to record the cards that the player has
+    - num_card, int, used to record the number of cards that the player has
+  - public method
+    - get_card, this function add a card from the top of the deck to the player
+    - get_score, this function is used to calculate the score that the player get
+  - init status
+    - cards, empty
+    - num_card, 0
 
 ## Shuffle method
 
@@ -47,11 +61,3 @@ Then we implement a game where two players play the game. They will draw 3 cards
 ## Sort method
 
 ## Two players play the game
-
-### Player data structure
-It contains the following variable:
-- cards, a list of card, used to record the cards that the player has
-- num_card, int, used to record the number of cards that the player has
-It contains the following method:
-- get_card, this function add a card from the top of the deck to the player
-- get_score, this function is used to calculate the score that the player get 
