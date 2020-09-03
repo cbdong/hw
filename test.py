@@ -22,17 +22,19 @@ class DeckTestCase(unittest.TestCase):
         self.smDeck = Deck(self.cards)
         self.emptyDeck = Deck([])
 
+        # new_deck contains cards with all color and number in order
+        self.new_deck = Deck([Card(color, number) for color in \
+        CONSTANTS.COLORS for number in \
+        range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1)])
+
     def test_init_value_no_given_cards(self):
         # the deck contains all cards in order
-        for color_cnt in range(len(CONSTANTS.COLORS)):
-            for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
-                index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
-                        + num - 1
-                card = self.deck.cards[index]
-                self.assertEqual(card.color, CONSTANTS.COLORS[color_cnt])
-                self.assertEqual(card.number, num)
-        self.assertEqual(36, len(self.deck.cards))
-        self.assertEqual(36, self.deck.size)
+        self.assertEqual(len(self.new_deck.cards), len(self.deck.cards))
+        for i in range(len(self.new_deck.cards)):
+            self.assertEqual(self.new_deck.cards[i].color, \
+            self.deck.cards[i].color)
+            self.assertEqual(self.new_deck.cards[i].number, \
+            self.deck.cards[i].number)
 
     def test_init_value_given_cards(self):
         for i in range(len(self.cards)):
@@ -44,15 +46,12 @@ class DeckTestCase(unittest.TestCase):
         self.deck.shuffle()
         self.deck.sort(color_order)
         # the deck contains all cards in order
-        for color_cnt in range(len(CONSTANTS.COLORS)):
-            for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
-                index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
-                        + num - 1
-                card = self.deck.cards[index]
-                self.assertEqual(card.color, CONSTANTS.COLORS[color_cnt])
-                self.assertEqual(card.number, num)
-        self.assertEqual(36, len(self.deck.cards))
-        self.assertEqual(36, self.deck.size)
+        self.assertEqual(len(self.new_deck.cards), len(self.deck.cards))
+        for i in range(len(self.new_deck.cards)):
+            self.assertEqual(self.new_deck.cards[i].color, \
+            self.deck.cards[i].color)
+            self.assertEqual(self.new_deck.cards[i].number, \
+            self.deck.cards[i].number)
 
     def test_get_from_non_empty(self):
         self.smDeck.get()
@@ -91,20 +90,20 @@ class PlayerTestCase(unittest.TestCase):
 class GameTestCase(unittest.TestCase):
     def setUp(self):
         self.game = Game()
+        self.new_deck = Deck([Card(color, number) for color in \
+        CONSTANTS.COLORS for number in \
+        range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1)])
 
     def test_init_value(self):
         self.assertEqual(0, self.game.player0.num_cards)
         self.assertEqual(0, self.game.player1.num_cards)
         # the deck contains all cards in order
-        for color_cnt in range(len(CONSTANTS.COLORS)):
-            for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
-                index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
-                        + num - 1
-                card = self.game.deck.cards[index]
-                self.assertEqual(card.color, CONSTANTS.COLORS[color_cnt])
-                self.assertEqual(card.number, num)
-        self.assertEqual(36, len(self.game.deck.cards))
-        self.assertEqual(36, self.game.deck.size)
+        self.assertEqual(len(self.new_deck.cards), len(self.game.deck.cards))
+        for i in range(len(self.new_deck.cards)):
+            self.assertEqual(self.new_deck.cards[i].color, \
+            self.game.deck.cards[i].color)
+            self.assertEqual(self.new_deck.cards[i].number, \
+            self.game.deck.cards[i].number)
 
 
 
