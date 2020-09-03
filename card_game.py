@@ -28,9 +28,10 @@ class Card():
         self.number = number
 
 class Deck():
-    def __init__(self):
+    def __init__(self, cards=None):
         self.cards = [Card(color, number) for color in CONSTANTS.COLORS for \
-                number in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1)]
+            number in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1)] \
+            if cards is None else cards
 
         self.size = len(self.cards)
 
@@ -44,8 +45,8 @@ class Deck():
         pass
 
 class Player():
-    def __init__(self):
-        self.cards = []
+    def __init__(self, cards=None):
+        self.cards = [] if cards is None else cards
         self.num_cards = 0
 
     def get_card(self, deck):

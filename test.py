@@ -18,8 +18,10 @@ class CardTestCase(unittest.TestCase):
 class DeckTestCase(unittest.TestCase):
     def setUp(self):
         self.deck = Deck()
+        self.cards = [Card('red', 1), Card('green', 3)]
+        self.smDeck = Deck(self.cards)
 
-    def test_init_value(self):
+    def test_init_value_no_given_cards(self):
         for color_cnt in range(len(CONSTANTS.COLORS)):
             for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
                 index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
@@ -30,6 +32,11 @@ class DeckTestCase(unittest.TestCase):
         self.assertEqual(36, len(self.deck.cards))
         self.assertEqual(36, self.deck.size)
 
+    def test_init_value_given_cards(self):
+        for i in range(len(self.cards)):
+            self.assertEqual(self.cards[i].color, self.smDeck.cards[i].color)
+            self.assertEqual(self.cards[i].number, self.smDeck.cards[i].number)
+
     def test_shuffle(self):
         self.assertEqual(True, True)
 
@@ -39,8 +46,20 @@ class DeckTestCase(unittest.TestCase):
     def test_get(self):
         self.assertEqual(True, True)
 
-if __name__ == '__main__':
-    cardSuite = unittest.TestLoader().loadTestsFromTestCase(CardTestCase)
-    alltests = unittest.TestSuite([cardSuite])
+class PlayerTestCase(unittest.TestCase):
+    def setUp(self):
+        self.player = Player()
+        self.deck = Deck()
 
-    unittest.TextTestRunner(verbosity=2).run(cardSuite)
+    def test_init_value(self):
+        self.assertEqual(0, self.player.num_cards)
+        self.assertEqual(0, len(self.player.cards))
+
+    def test_get_card(self):
+        self.assertEqual(True, True)
+
+    def test_get_score(self):
+        self.assertEqual(True, True)
+
+if __name__ == '__main__':
+    unittest.TextTestRunner(verbosity=0).run()
