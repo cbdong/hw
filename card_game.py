@@ -48,7 +48,7 @@ class Deck():
         self.size -= 1
         return self.cards.pop()
 
-    def sort_cards(self, color_order):
+    def sort(self, color_order):
         if self._isEmpty():
             return
         def card_compare(cardA, cardB):
@@ -66,7 +66,17 @@ class Player():
         self.num_cards = 0
 
     def get_card(self, deck):
-        pass
+        """
+        Player try to get a card from a card deck
+        deck: the deck that the player will get a card from. If the deck is
+              empty, raise ValueError
+        """
+        try:
+            self.cards.append(deck.get())
+            self.num_cards += 1
+        except:
+            raise ValueError("The input deck is empty")
 
     def get_score(self):
-        pass
+        return sum([CONSTANTS.COLOR_WEIGHT[card.color] * card.number for \
+                card in self.cards])
