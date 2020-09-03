@@ -5,6 +5,10 @@
 - [Card game design overview](#card-game-design-overview)
   - [Goal](#goal)
   - [Data structure](#data-structure)
+- [Shuffle method](#shuffle-method)
+- [Get method](#get-method)
+- [Sort method](#sort-method)
+- [Two players play the game](#two-players-play-the-game)
 
 ## Card game design overview
 
@@ -36,10 +40,18 @@ Then we implement a game where two players play the game. They will draw 3 cards
   - isEmpty
   In the following part of the doc, we will discuss how to implement the methods for the deck.
 
-### Shuffle method
+## Shuffle method
 
-### Get method
+## Get method
 
-### Sort method
+## Sort method
 
 ## Two players play the game
+
+### Player data structure
+It contains the following variable:
+- cards, a list of card, used to record the cards that the player has
+- num_card, int, used to record the number of cards that the player has
+It contains the following method:
+- get_card, this function add a card from the top of the deck to the player
+- get_score, this function is used to calculate the score that the player get 
