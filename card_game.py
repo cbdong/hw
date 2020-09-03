@@ -87,11 +87,13 @@ class Game():
         self.player1 = Player()
         self.deck = Deck()
 
-    def play(self):
+    def _take_cards(self):
         self.deck.shuffle()
         for i in range(CONSTANTS.NUM_CARDS_TO_GET_BY_PLAYER):
             self.player0.get_card(self.deck)
             self.player1.get_card(self.deck)
+
+    def _find_winner(self):
         score0 = self.player0.get_score()
         score1 = self.player1.get_score()
         if score0 > score1:
@@ -100,3 +102,7 @@ class Game():
             return 1
         else:
             return -1
+
+    def play(self):
+        self._take_cards()
+        return self._find_winner()

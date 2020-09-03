@@ -1,4 +1,4 @@
-from card_game import Card, Deck, Player
+from card_game import Card, Deck, Player, Game
 import CONSTANTS
 import unittest
 
@@ -23,6 +23,7 @@ class DeckTestCase(unittest.TestCase):
         self.emptyDeck = Deck([])
 
     def test_init_value_no_given_cards(self):
+        # the deck contains all cards in order
         for color_cnt in range(len(CONSTANTS.COLORS)):
             for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
                 index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
@@ -42,6 +43,7 @@ class DeckTestCase(unittest.TestCase):
         color_order = CONSTANTS.COLORS
         self.deck.shuffle()
         self.deck.sort(color_order)
+        # the deck contains all cards in order
         for color_cnt in range(len(CONSTANTS.COLORS)):
             for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
                 index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
@@ -85,6 +87,26 @@ class PlayerTestCase(unittest.TestCase):
 
     def test_get_score(self):
         self.assertEqual(6, self.player_with_cards.get_score())
+
+class GameTestCase(unittest.TestCase):
+    def setUp(self):
+        self.game = Game()
+
+    def test_init_value(self):
+        self.assertEqual(0, self.game.player0.num_cards)
+        self.assertEqual(0, self.game.player1.num_cards)
+        # the deck contains all cards in order
+        for color_cnt in range(len(CONSTANTS.COLORS)):
+            for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
+                index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
+                        + num - 1
+                card = self.game.deck.cards[index]
+                self.assertEqual(card.color, CONSTANTS.COLORS[color_cnt])
+                self.assertEqual(card.number, num)
+        self.assertEqual(36, len(self.game.deck.cards))
+        self.assertEqual(36, self.game.deck.size)
+
+
 
 if __name__ == '__main__':
     unittest.TextTestRunner(verbosity=0).run()
