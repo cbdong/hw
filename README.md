@@ -24,34 +24,34 @@ Then we implement a game where two players play the game. They will draw 3 cards
 
 ### Data Structure
 
-1. **Class Card**
+1. **Card**
   - Variables:
     - color
     - number
   - init status
-    - both the variable are assigned by the parameter
-2. **Class Deck**
+    - both the variable are assigned by the parameter, note that color and number needs to be valid values. Color should be in the valid color list, and number should be in the expected range.
+2. **Deck**
   - Variables
     - cards, a list of card, used to record the remaining cards in the deck
     - size, a int, used to record the number of cards left in the deck
-  - public method
+  - Public method
     - shuffle, shuffle the cards in the deck
     - get, get the top card and return it
     - sort, sort the cards in the decking according to the given color order and the number
-  - private method
+  - Private method
     - isEmpty, check if the deck is already empty
-  - init status
+  - Init status
     - cards, three color red, yellow, green, number from 1 to 12
-    - size = 36
+    - size, 36
 3. **Player**
   - Variables
     - cards, a list of card, used to record the cards that the player has
-    - num_card, int, used to record the number of cards that the player has
-  - public method
+    - num_cards, int, used to record the number of cards that the player has
+  - Public method
     - get_card, this function add a card from the top of the deck to the player
     - get_score, this function is used to calculate the score that the player get
-  - init status
-    - cards, empty
+  - Init status
+    - cards, empty list
     - num_card, 0
 
 ## Shuffle method
