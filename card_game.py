@@ -48,8 +48,17 @@ class Deck():
         self.size -= 1
         return self.cards.pop()
 
-    def sort(self, color_order):
-        pass
+    def sort_cards(self, color_order):
+        if self._isEmpty():
+            return
+        def card_compare(cardA, cardB):
+            color_to_idx = {color: i for i, color in enumerate(color_order)}
+            if cardA.color == cardB.color:
+                return cardA.number - cardB.number
+            else:
+                return color_to_idx[cardA.color] - color_to_idx[cardB.color]
+        self.cards.sort(cmp=card_compare)
+
 
 class Player():
     def __init__(self, cards=None):

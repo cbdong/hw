@@ -39,8 +39,19 @@ class DeckTestCase(unittest.TestCase):
             self.assertEqual(self.cards[i].number, self.smDeck.cards[i].number)
 
     def test_sort(self):
-        self.assertEqual(True, True)
-
+        color_order = CONSTANTS.COLORS
+        self.deck.shuffle()
+        self.deck.sort_cards(color_order)
+        for color_cnt in range(len(CONSTANTS.COLORS)):
+            for num in range(1, CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK + 1):
+                index = color_cnt * CONSTANTS.NUM_CARDS_EACH_COLOR_IN_DECK \
+                        + num - 1
+                card = self.deck.cards[index]
+                self.assertEqual(card.color, CONSTANTS.COLORS[color_cnt])
+                self.assertEqual(card.number, num)
+        self.assertEqual(36, len(self.deck.cards))
+        self.assertEqual(36, self.deck.size)
+        
     def test_get_from_non_empty(self):
         self.smDeck.get()
         self.assertEqual(1, self.smDeck.size)
