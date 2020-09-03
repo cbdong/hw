@@ -6,7 +6,7 @@ This file contains the implementation of the card game.
 """
 
 import CONSTANTS
-
+import random
 class Card():
     def __init__(self, color, number):
         """
@@ -36,7 +36,7 @@ class Deck():
         self.size = len(self.cards)
 
     def shuffle(self):
-        pass
+        random.shuffle(self.cards)
 
     def get(self):
         pass
