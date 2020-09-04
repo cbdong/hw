@@ -53,6 +53,8 @@ class Deck():
             return
         def card_compare(cardA, cardB):
             color_to_idx = {color: i for i, color in enumerate(color_order)}
+            for i in range(len(color_order)):
+                color_to_idx[color_order[i]] = i
             if cardA.color == cardB.color:
                 return cardA.number - cardB.number
             else:
@@ -63,7 +65,7 @@ class Deck():
 class Player():
     def __init__(self, cards=None):
         self.cards = [] if cards is None else cards
-        self.num_cards = 0
+        self.num_cards = len(self.cards)
 
     def get_card(self, deck):
         """
@@ -71,15 +73,16 @@ class Player():
         deck: the deck that the player will get a card from. If the deck is
               empty, raise ValueError
         """
-        try:
-            self.cards.append(deck.get())
-            self.num_cards += 1
-        except:
+        if deck.size == 0:
             raise ValueError("The input deck is empty")
+
+        card = deck.get()
+        self.cards.append(card)
+        self.num_cards += 1
 
     def get_score(self):
         return sum([CONSTANTS.COLOR_WEIGHT[card.color] * card.number for \
-                card in self.cards])
+                    card in self.cards])
 
 class Game():
     def __init__(self):
@@ -98,7 +101,7 @@ class Game():
         for card in self.player0.cards:
             print("({},{})".format(card.color, card.number))
         print("Player1 has the following cards:")
-        for card in self.player0.cards:
+        for card in self.player1.cards:
             print("({},{})".format(card.color, card.number))
         score0 = self.player0.get_score()
         score1 = self.player1.get_score()

@@ -37,8 +37,8 @@ Then we implement a game where two players play the game. They will draw 3 cards
   - Private method
     - isEmpty, check if the deck is already empty
   - Init status
-    - cards, three color red, yellow, green, number from 1 to 12, or the given cards
-    - size, 36, or the length of the given cards
+    - cards, three color red, yellow, green, number from 1 to the max number of the card in each color, or the given cards
+    - size, the length of the given cards
 3. **Player**
   - Variables
     - cards, a list of card, used to record the cards that the player has
@@ -47,8 +47,8 @@ Then we implement a game where two players play the game. They will draw 3 cards
     - get_card, this function add a card from the top of the deck to the player
     - get_score, this function is used to calculate the score that the player get
   - Init status
-    - cards, empty list
-    - num_card, 0
+    - cards, empty list or given cards
+    - num_card, length of cards
 
 4. **Game**
   - Variables
