@@ -24,7 +24,7 @@ Then we implement a game where two players play the game. They will draw 3 cards
   - Variables:
     - color
     - number
-  - init status
+  - Init status
     - both the variable are assigned by the parameter, note that color and number needs to be valid values. Color should be in the valid color list, and number should be in the expected range.
 2. **Deck**
   - Variables
