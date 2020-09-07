@@ -42,9 +42,6 @@ class DeckTestCase(unittest.TestCase):
             self.assertEqual(self.cards[i].color, self.smDeck.cards[i].color)
             self.assertEqual(self.cards[i].number, self.smDeck.cards[i].number)
 
-    # test_shuffle not necessary because it only uses random.shuffle function.
-    # Not necessary to test the random.shuffle function.
-
     def test_sort(self):
         color_order = CONSTANTS.COLORS
         self.deck.shuffle()
