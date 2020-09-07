@@ -8,6 +8,7 @@ class CardTestCase(unittest.TestCase):
 
     def test_value(self):
         self.assertEqual(self.card.color, 'red', 'wrong color assigned')
+        self.assertEqual(self.card.number, 12, 'wrong number assigned')
 
     def test_color_value_exception(self):
         self.assertRaises(ValueError, Card, 'happy', 12)
@@ -54,7 +55,9 @@ class DeckTestCase(unittest.TestCase):
             self.deck.cards[i].number)
 
     def test_get_from_non_empty(self):
-        self.smDeck.get()
+        got_card = self.smDeck.get()
+        self.assertEqual('green', got_card.color)
+        self.assertEqual(3, got_card.number)
         self.assertEqual(1, self.smDeck.size)
         self.assertEqual(1, len(self.smDeck.cards))
         self.assertEqual('red', self.smDeck.cards[0].color)
@@ -80,6 +83,9 @@ class PlayerTestCase(unittest.TestCase):
         self.player.get_card(self.deck)
         self.assertEqual('green', self.player.cards[0].color)
         self.assertEqual(3, self.player.cards[0].number)
+        self.assertEqual(1, len(self.deck.cards))
+        self.assertEqual('red', self.deck.cards[0].color)
+        self.assertEqual(1, self.deck.cards[0].number)
 
     def test_get_card_from_empty_deck(self):
         self.assertRaises(ValueError, self.player.get_card, self.emptyDeck)
